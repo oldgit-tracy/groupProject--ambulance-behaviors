@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<h1>Prototypes</h1>
+<img src = "AcknowledgeByBattalion.png" /img>
+<img src = "AcknowledgeTimes.png" /img>
+<img src = "AcknowledgeByBattalion.png" /img>
+<img src = "AllEvents.png" /img>
+<img src = "DailyActivity.png" /img>
+<img src = "NegativeByBattalion.png" /img>
+<img src = "NegativeTransport.png" /img>
+<img src = "NgativeTransportEvents.png" /img>
+<img src = "ResponseByBattalion.png" /img>
+<img src = "ResponseTimes.png" /img>
+<img src = "TimeByBattalion.png" /img>
+<img src = "TransportTimes.png" /img>
+</html>
