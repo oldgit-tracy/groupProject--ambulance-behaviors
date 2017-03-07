@@ -11,20 +11,25 @@
   </head>
 
     <body>
-        <h1>Midterm Project Prototype</h1>
-        <p>Group Member: Hume Dickie, Yuanyuan Ruan</p>
+
+	<section class="page-header">
+    	  <h1 class="project-name">Midterm Project Prototype: SF Fire Department December 2016</h1>
+   	   <h2 class="project-tagline">Hume Dickie and Yuanyuan Ruan</h2> 
+   	</section>
+	
+	<h2>Data</h2>
+	The data we used for these two visualizations were part of all fire department calls for service in San Francisco during December 2016 (which you can find <a href = "https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service-December-2016/97i8-upbq?category=Public-Safety&view_name=Fire-Department-Calls-for-Service-December-2016"> here </a> ) We used the "Tranport" times and "Hospital" times for these calculations. To subset this data set, we used R and removed all values which were empty.
+
+	<h2>Visualization</h2>
+	The upper chart shows the distribution of how longs it took ambulances to get from the scene of injury to the hospital. You will observe that there are negative times! The second graph shows a closer look.
+        <img src="officialPrototype.png" height="768" width="1024">
+
+
 	<h2>Bios:</h2>
         <p>
 		<br>Yuanyuan Ruan -- I am a senior student in Data Science major in USF. I love data visualization class :P. I am looking forward to work after graduation in two months. I have learned a lot in USF and I will value these memories.
         </p>
         <p>Hume Dickie -- I am a senior Data Science major ar USF. I am a Public Speaking coach on campus and my hoobies include math, computer science and improv!</p>
-	
-	<h2>Data</h2>
-	The data we used for these two visualizations are two columns from the data set which you can find <a href = "https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service-December-2016/97i8-upbq?category=Public-Safety&view_name=Fire-Department-Calls-for-Service-December-2016"> here </a> We used Transport.DtTm and Hospital.DtTm. To subset this data set, we used R and removed all values which were empty.
-
-	<h2>Visualization</h2>
-	This is our visualization. It shows the distribution of how longs it took ambulances to get from the scene of injury to the hospital. The second graph shows a closer look at the negative times- which don't make any literal sense.
-        <img src="officialPrototype.png" height="600" width="600">
 
     </body>
 </html>
