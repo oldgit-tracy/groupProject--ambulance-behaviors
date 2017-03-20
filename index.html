@@ -26,7 +26,7 @@
        <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <![endif]-->
   </head>
-  <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
+  <body>
 
     <!--HEADER -->
     <div class="header">
@@ -96,44 +96,17 @@
         </section>
         <!--/.HOME END-->
 
-<!-- BEGIN NAVBAR -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">CS 360: Omega Tron</a>
-	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-	</button>
-    </div>
-    <ul class="nav navbar-nav" id = "myNavbar">
-      <li><a href="#data">Data</a></li>
-      <li><a href="#proto">Prototype</a></li>
-	<li><a href="#d3">d3</a></li>
-      <li><a href="#team">Team</a></li>
-    </ul>
-  </div>
-</nav>
-<!-- END NAVBAR -->
 
         <!--About-->
-        <section class="grey-bg mar-tm-10">
-          <div class="container" id="data">
+        <section class="grey-bg mar-tm-10" id="about">
+          <div class="container">
             <div class="row">
               <div class="col-md-3">
                 <h1>
                   <span>About</span>
                 </h1>
                 <p class="content-detail">
-                   This project used data collected and published by the City of San Francisco about the time and nature of each call that came in during the December of 2016. Visit <a href = "https://data.sfgov.org/Public-Safety/Fire-Department-Calls-for-Service-December-2016/97i8-upbq?category=Public-Safety&view_name=Fire-Department-Calls-for-Service-December-2016">SF OpenData</a> for our dataset. This dataet has 27,768 observations on 34 different variables. Our visualizations explore 3 dimenions: the Battalion that responded to the event (Battalion), and the times ambulances picked someone up (Transport.DtTm) and arrived at the hospital (Hospital.DtTm).
-		<\p>
-		<p>
-			The line and bar charts are pretty straightforward. The times were reported with accuracy down to the second, but we have binned them by the minute (rounding up at the 31st second) to increase effectiveness.
-		<\p>
-		<p>
-			Note: Not all calls to the SFFD resulted in an ambulance call. 
-		<\p>
+                   This dataset
               </div>
             </div>
           </div>
@@ -142,15 +115,15 @@
 
 
           <!--TABLEAU PROTOTYPE-->
-        <section class="grey-bg mar-tm-10">
-          <div class="container" id="proto">
+        <section class="grey-bg mar-tm-10" id="tableauPrototype">
+          <div class="container">
             <div class="row">
               <div class="col-md-3">
                 <h1>
                   <span>Tableau Prototype</span>
                 </h1>
                 <p class="content-detail">
-                  <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"> <em>See original prototype webpage</em> </a> Bar and Area Chart
+                  <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"> <em>Click me</em> </a> Overall descrition
               </div>
               <div class="col-md-9 content-right">
                 <!--PORTFOLIO IMAGE-->
@@ -158,9 +131,9 @@
 
                     <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"><img alt="image" src="prototype2.png">
                       </a>
-			<p>
-                      These two visualizations emphasize something impossible: some people arrived at the hospital before they were picked up! Or so says the data... The cutaway to the negative times has been stretched vertically, but is true to the x-axis of the area chart.
-			<\p>
+                      This graph enhences the negative time from scence to hospital. The area graph shows the total time that fireman spend on way from scene to hopital in among all the district in the range of -40 to 80.?????
+
+
                 <!--/.PORTFOLIO IMAGE END-->
               </div>
             </div>
@@ -168,21 +141,25 @@
         </section>
         <!--/.TABLEAU PROTOTYPE END-->
 
+
+
         <!--D3-->
-        <section class="grey-bg mar-tm-10">
-          <div class="container" id="d3">
+        <section class="grey-bg mar-tm-10" id="D3">
+          <div class="container">
             <div class="row">
               <div class="col-md-3">
                 <h1>
                   <span>D3</span>
                 </h1>
-                <script src="prototypechart.js"></script>
+
                 <p class="content-detail">
                    Overall description
               </div>
               <div class="col-md-9 content-right">
                 <!--PORTFOLIO IMAGE-->
-
+                <svg width = "700" height = "500"></svg>
+                <script src="https://d3js.org/d3.v4.min.js"></script>
+                <script src="easyversionPrototypeChart.js"></script>
                 <!--/.PORTFOLIO IMAGE END-->
               </div>
             </div>
@@ -190,9 +167,11 @@
         </section>
         <!--/.D3 END-->
 
+
+
         <!--TEAM-->
-        <section class="grey-bg mar-tm-10">
-          <div class="container" id="team">
+        <section class="grey-bg mar-tm-10" id="team">
+          <div class="container">
             <div class="row">
               <div class="col-md-5">
                 <h1>
@@ -278,29 +257,5 @@
     <script src="typed.js"></script>
     <script src="main.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<!-- Smooth scrolling -->
-	<script>
-$(document).ready(function(){
-  // Add smooth scrolling to all links in navbar + footer link
-  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
-  // Make sure this.hash has a value before overriding default behavior
-  if (this.hash !== "") {
-    // Prevent default anchor click behavior
-    event.preventDefault();
-    // Store hash
-    var hash = this.hash;
-    // Using jQuery's animate() method to add smooth page scroll
-    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-    $('html, body').animate({
-      scrollTop: $(hash).offset().top
-    }, 900, function(){
-      // Add hash (#) to URL when done scrolling (default click behavior)
-      window.location.hash = hash;
-      });
-    } // End if
-  });
-})
-</script>
   </body>
 </html>
