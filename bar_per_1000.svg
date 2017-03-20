@@ -143,6 +143,7 @@
     var bars = g.selectAll("bar").data(data).enter().append("rect")
     .attr("class", "bar")
     .attr("width", bats.bandwidth())
+    .attr("stroke","grey")
     .attr("fill", function(d) {
       return color(d.Activity);
     })
