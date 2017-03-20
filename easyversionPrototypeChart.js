@@ -28,22 +28,22 @@ d3.csv("lineData.csv", function(d) {
 /*
   time_to_count = {};
   for(var i = 0; i < data.length; i++){
-	  time1 = parseTime(data[i]["Hospital DtTm"]);
-	  time2 = parseTime(data[i]["Transport DtTm"]);
-	  time_interval = d3.timeMinute.count(time1, time2);
-	  if(time_interval in time_to_count){
-	      time_to_count[time_interval] += 1;
-	  }
-	  else{
-	      time_to_count[time_interval] = 1;
-	  }
+    time1 = parseTime(data[i]["Hospital DtTm"]);
+    time2 = parseTime(data[i]["Transport DtTm"]);
+    time_interval = d3.timeMinute.count(time1, time2);
+    if(time_interval in time_to_count){
+        time_to_count[time_interval] += 1;
+    }
+    else{
+        time_to_count[time_interval] = 1;
+    }
   }
 
   x_axis_max = 0;
   y_axis_max = 0;
   for(var k in time_to_count){
-	  x_axis_max = Math.max(x_axis_max, +k);
-	  y_axis_max = Math.max(y_axis_max, time_to_count[k]);
+    x_axis_max = Math.max(x_axis_max, +k);
+    y_axis_max = Math.max(y_axis_max, time_to_count[k]);
   }
 */
   x.domain([-40, 80]);
@@ -53,14 +53,14 @@ d3.csv("lineData.csv", function(d) {
 /*
   line_array = [];
   for(var k in time_to_count){
-	  line_array.push({x: +k, y: time_to_count[k]});
+    line_array.push({x: +k, y: time_to_count[k]});
   }*/
 
   g.append("path")
       .datum(data)
       .attr("fill", "red")
-	  .attr("stroke", "red")
-	  .attr("stroke-width", 3)
+    .attr("stroke", "red")
+    .attr("stroke-width", 3)
       .attr("d", area);
 
   //x axis
@@ -90,39 +90,39 @@ d3.csv("lineData.csv", function(d) {
   var x_o = 600, y_o = 100;
   
   g.append("text")
-  	.style("font-size","65px")
-  	.style("fill","red")
-  	.attr("transform", "translate(600,100)")
+    .style("font-size","65px")
+    .style("fill","red")
+    .attr("transform", "translate(600,100)")
     .text("28%");
   
   g.append("text")
-  	.style("font-size","25px")
-  	.style("fill","red")
-  	.attr("transform", "translate("+(x_o + 125)+","+(y_o - 35)+")")
+    .style("font-size","25px")
+    .style("fill","red")
+    .attr("transform", "translate("+(x_o + 125)+","+(y_o - 35)+")")
     .text("of all calls");
  
   g.append("text")
-  	.style("font-size","25px")
-  	.style("fill","red")
-  	.attr("transform", "translate("+(x_o + 125)+","+(y_o - 13)+")")
+    .style("font-size","25px")
+    .style("fill","red")
+    .attr("transform", "translate("+(x_o + 125)+","+(y_o - 13)+")")
     .text("to the Fire");
   
   g.append("text")
-  	.style("font-size","25px")
-  	.style("fill","red")
-  	.attr("transform", "translate("+(x_o + 125)+","+(y_o + 8)+")")
+    .style("font-size","25px")
+    .style("fill","red")
+    .attr("transform", "translate("+(x_o + 125)+","+(y_o + 8)+")")
     .text("Department");
   
   g.append("text")
-  	.style("font-size","33px")
-  	.style("fill","red")
-  	.attr("transform", "translate("+(x_o + 50)+","+(y_o + 34)+")")
+    .style("font-size","33px")
+    .style("fill","red")
+    .attr("transform", "translate("+(x_o + 50)+","+(y_o + 34)+")")
     .text("ended in an");
   
   g.append("text")
-  	.style("font-size","50px")
-  	.style("fill","red")
-  	.attr("transform", "translate("+(x_o + 20)+","+(y_o + 70)+")")
+    .style("font-size","50px")
+    .style("fill","red")
+    .attr("transform", "translate("+(x_o + 20)+","+(y_o + 70)+")")
     .text("ambulance");
   
   
@@ -130,31 +130,31 @@ d3.csv("lineData.csv", function(d) {
   var mins = d3.scaleBand().rangeRound([35, 315]).padding(0.1),
     cts = d3.scaleLinear().rangeRound([height, 132]);
   
-  	var dmn = [-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1];
+    var dmn = [-35,-34,-33,-32,-31,-30,-29,-28,-27,-26,-25,-24,-23,-22,-21,-20,-19,-18,-17,-16,-15,-14,-13,-12,-11,-10,-9,-8,-7,-6,-5,-4,-3,-2,-1];
   
   
     d3.csv("barData.csv", function(error, data) {
-  		if (error) throw error;
+      if (error) throw error;
         mins.domain(dmn);   
-    	cts.domain([0,18]);
+      cts.domain([0,18]);
       
     g.append("g")
-    	.attr("class", "axis axis--x")
-    	.attr("transform", "translate(0," + height + ")")
-    	.call(d3.axisBottom(mins)
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(mins)
             .tickFormat("")
            );
       
     g.append("g")
       .attr("class", "axis axis--y")
-    	.attr("transform", "translate(53,-100)")
+      .attr("transform", "translate(53,-100)")
       .call(d3.axisLeft(cts));
   
     // add the Y gridlines
- 	  g.append("g")
-    	.attr("class","gridlines y-gridlines")
-   		.style("opacity",0.3)
-    	.attr("transform", "translate(53,-100)")
+    g.append("g")
+      .attr("class","gridlines y-gridlines")
+      .style("opacity",0.3)
+      .attr("transform", "translate(53,-100)")
       .call(d3.axisRight(cts)
           .ticks(7)
           .tickSize(240)
