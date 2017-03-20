@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Simple One Page Personal</title>
+    <title>CS 360 Midterm Project</title>
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1" name="viewport">
     <meta content="Bodo - Simple One Page Personal" name="description">
@@ -26,6 +26,24 @@
     <!--[if lt IE 9]>
        <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <![endif]-->
+
+    <style>
+h1 {
+    font-size: 300%;
+}
+
+h2 {
+    font-size: 250%;
+}
+
+p {
+    font-size: 150%;
+}
+
+.content-detail {
+  font-size: 150%;
+}
+</style>
   </head>
   <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
 
@@ -83,7 +101,7 @@
             <div class="row">
               <div class="wrap-hero-content">
                   <div class="hero-content">
-                    <h1>Hello</h1>
+                    <h1>CS 360</h1>
                     <br>
                     <span class="typed"></span>
                   </div>
@@ -134,7 +152,6 @@
 
 		<p>
 			Note: Not all calls to the SFFD resulted in an ambulance call.
-		<\p>
               </div>
             </div>
           </div>
@@ -146,12 +163,12 @@
         <section class="grey-bg mar-tm-10">
           <div class="container" id="proto">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-12">
                 <h1>
                   <span>Tableau Prototype</span>
                 </h1>
                 <p class="content-detail">
-                  <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"> <em>See original prototype webpage</em> </a> Bar and Area Chart
+                  
               </div>
               <div class="col-md-9 content-right">
                 <!--PORTFOLIO IMAGE-->
@@ -159,9 +176,9 @@
 
                     <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"><img alt="image" src="prototype2.png">
                       </a>
-			<p>
+			               <p>
                       These two visualizations emphasize something impossible: some people arrived at the hospital before they were picked up! Or so says the data... The cutaway to the negative times has been stretched vertically, but is true to the x-axis of the area chart.
-			<\p>
+                      <a target="_blank" href="https://usf-cs360-2017.github.io/midterm-omega-tron/prototype.html"> <em>See original prototype webpage</em> </a>
                 <!--/.PORTFOLIO IMAGE END-->
               </div>
             </div>
@@ -174,11 +191,11 @@
         <section class="grey-bg mar-tm-10">
           <div class="container"  id="d3">
             <div class="row">
-              <div class="col-md-3">
+              <div class="col-md-12">
                 <h1>
                   <span>D3</span>
                 </h1>
-
+                  <img src = "vis_1_official.png" height = "500" width = "960">
                 <p class="content-detail">
                    This first chart is an area graph with a callout focusing on a subset of the data. The x-axis is the duration of the ride from the scene to the hospital. This chart includes negative values in the data. Since these values don't make physical sense, they are a sign that something else could be going on. There's no way to tell with the information we have what that could be, or if it is important. It could be that fire fighters simply forget to push some first button until minutes after they've hit the second. Maybe this is just random error- or maybe it's because they're tired. Should we be worried? We can look to the next chart to find out.
 
@@ -186,30 +203,13 @@
                    <br>
                    <br>
                    <br>
-
+                   <img src = "vis_2_official.png" height = "500" width = "960">
                    <p>
                    This second bar chart does not encode number of records as height. In this chart, the height of the bars proportional to the number of times a battalion reported a negative (impossible) time divided by the total number of calls that Battalion responded to, and the color is proportional to the number of calls that battalion responded to. Our motion for visualizaing this calculation was to get a sense of whether or not some Battalions might be struggling more than others. From our exploratory analysis of the other fields in the data, we did not find and compelling correlates with the entries of negative times. The way this chart shows the tendency of a battalion to make record-keeping mistakes with height, and encodes the total number of calls that battalion responded to with blue allows us to see that Battalion 5 has seemingly the worst performance in this metric, but the color of the bar reminds us to take that value with a grain of salt. The bars are organized from left to right, from most confident to least confident. The average rate of "mistakes" was 0.35%, and is labeled in the graphic.
 
               </div>
               <div class="col-md-9 content-right">
                 <!--PORTFOLIO IMAGE-->
-                
-                <br>
-                <br>
-                <br>
-                <br>
-                <img src = "vis_1_official.png" height = "500" width = "960">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <img src = "vis_2_official.png" height = "500" width = "960">
-                
-
-
-                
-
                 
                 <!-- <script src="bar_per_1000.js"></script> -->
                 <!--/.PORTFOLIO IMAGE END-->
