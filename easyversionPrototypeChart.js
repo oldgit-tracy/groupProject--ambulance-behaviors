@@ -1,4 +1,3 @@
-(function(){
 var svg_x = 0;
 var svg_y = 0;
 
@@ -178,5 +177,3 @@ d3.csv("lineData.csv", function(d) {
     });
       
     });
-
-  })
