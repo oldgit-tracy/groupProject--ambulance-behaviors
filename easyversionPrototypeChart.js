@@ -6,11 +6,11 @@ var width = 800,
     size = 100,
     padding = 0;
 
-var svg = d3.select("#vis1"),
+var svg1 = d3.select("#vis1"),
     margin = {top: 20, right: 20, bottom: 30, left: 20},
-    width = svg.attr("width") - margin.left - margin.right,
-    height = svg.attr("height") - margin.top - margin.bottom,
-    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+    width = svg1.attr("width") - margin.left - margin.right,
+    height = svg1.attr("height") - margin.top - margin.bottom,
+    g = svg1.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 var parseTime = d3.timeParse("%m/%d/%Y %I:%M:%S %p");
 
