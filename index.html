@@ -47,7 +47,7 @@
               <span>Tableau Prototype</span>
             </a>
 
-            <a data-scroll="" href="#D3">
+            <a data-scroll="" href="#d3">
               <span>D3</span>
             </a>
 
@@ -110,7 +110,7 @@
     <ul class="nav navbar-nav" id = "myNavbar">
       <li><a href="#data">Data</a></li>
       <li><a href="#proto">Prototype</a></li>
-	<li><a href="#d3">d3</a></li>
+	     <li><a href="#d3">D3</a></li>
       <li><a href="#team">Team</a></li>
     </ul>
   </div>
@@ -132,7 +132,7 @@
 			The line and bar charts are pretty straightforward. The times were reported with accuracy down to the second, but we have binned them by the minute (rounding up at the 31st second) to increase effectiveness.
 
 		<p>
-			Note: Not all calls to the SFFD resulted in an ambulance call. 
+			Note: Not all calls to the SFFD resulted in an ambulance call.
 		<\p>
               </div>
             </div>
@@ -160,7 +160,7 @@
                       </a>
 			<p>
                       These two visualizations emphasize something impossible: some people arrived at the hospital before they were picked up! Or so says the data... The cutaway to the negative times has been stretched vertically, but is true to the x-axis of the area chart.
-
+			<\p>
                 <!--/.PORTFOLIO IMAGE END-->
               </div>
             </div>
@@ -170,8 +170,8 @@
 
 
         <!--D3-->
-        <section class="grey-bg mar-tm-10" id="D3">
-          <div class="container">
+        <section class="grey-bg mar-tm-10">
+          <div class="container"  id="d3">
             <div class="row">
               <div class="col-md-3">
                 <h1>
@@ -183,10 +183,11 @@
               </div>
               <div class="col-md-9 content-right">
                 <!--PORTFOLIO IMAGE-->
-
                 <svg width = "700" height = "500"></svg>
                 <script src="https://d3js.org/d3.v4.min.js"></script>
                 <script src="easyversionPrototypeChart.js"></script>
+                <script src="bar_neg_times.js"></script>
+                <script src="bar_per_1000.js"></script>
                 <!--/.PORTFOLIO IMAGE END-->
               </div>
             </div>
@@ -218,8 +219,6 @@
 
                 </div>
               </div>
-
-
 
 
           </div>
