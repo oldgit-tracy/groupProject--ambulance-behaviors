@@ -1,4 +1,5 @@
-  var svg = d3.select("#vis2"),
+( function() {
+    var svg = d3.select("#vis2"),
     margin = {top: 20, right: 80, bottom: 60, left: 60},
     width = svg.attr("width") - margin.left - margin.right,
     height = svg.attr("height") - margin.top - margin.bottom,
@@ -152,3 +153,4 @@
         .attr("y2",act(3.53));
       
     });
+  })

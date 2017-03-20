@@ -1,4 +1,5 @@
-var svg_x = 0;
+(function(){
+
 var svg_y = 0;
 
 var width = 800,
@@ -177,3 +178,4 @@ d3.csv("lineData.csv", function(d) {
     });
       
     });
+})
