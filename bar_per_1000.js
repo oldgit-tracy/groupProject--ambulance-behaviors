@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<head>
-  <meta charset="utf-8">
-  <script src="https://d3js.org/d3.v4.min.js"></script>
-  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-  <style>
-    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
-    
-  </style>
-</head>
-
-<body>
-  <svg width="960" height="500" id = "vis2"></svg>
-<script>
+( function() {
   var svg = d3.select("#vis2"),
     margin = {top: 20, right: 80, bottom: 60, left: 60},
     width = svg.attr("width") - margin.left - margin.right,
@@ -166,5 +153,4 @@
         .attr("y2",act(3.53));
       
     });
-  </script>
-</body>
+})
