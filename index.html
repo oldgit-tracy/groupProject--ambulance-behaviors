@@ -370,14 +370,14 @@ d3.csv("lineData.csv", function(d) {
     .attr("width", mins.bandwidth())
     .attr("fill", "red")
     .attr("x", function(d) {
-      return mins(d.Minutes);
+      return mins(+d.Minutes);
     })
     .attr("y", function(d) {
-      return cts(d.Count) - cts(21.55);
+      return cts(+d.Count) - cts(21.55);
     })
     .attr("height", function(d) {
-      console.log(cts(d.Count));
-      return height - cts(d.Count);
+      console.log(cts(+d.Count));
+      return height - cts(+d.Count);
     });
       
     });
