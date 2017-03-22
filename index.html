@@ -226,6 +226,14 @@ d3.csv("lineData.csv", function(d) {
   y.domain([0, d3.max(data, function(d){ return +d["Count"]})]);
   area.y0(y(0));
 
+    g.append("path")
+      .datum(data)
+      .attr("fill", "red")
+    .attr("stroke", "red")
+    .attr("stroke-width", 3)
+      .attr("d", area);
+
+
       g.append("line")
     .attr("stroke","limegreen")
     .attr("stroke-width","2px")
@@ -238,20 +246,13 @@ d3.csv("lineData.csv", function(d) {
     .style("fill","limegreen")
     .attr("x",455)
     .attr("y",415)
-    .text("average")
+    .text("average");
   
   g.append("text")
     .style("fill","limegreen")
     .attr("x",455)
     .attr("y",400)
-    .text("16.96")
-
-  g.append("path")
-      .datum(data)
-      .attr("fill", "red")
-    .attr("stroke", "red")
-    .attr("stroke-width", 3)
-      .attr("d", area);
+    .text("16.96");
 
   //x axis
   g.append("g")
