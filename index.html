@@ -330,7 +330,10 @@ d3.csv("lineData.csv", function(d) {
     .attr("transform", "translate("+(x_o + 20)+","+(y_o + 70)+")")
     .text("ambulance");
   
-  
+  g.append("text")
+    .attr("x",-20)
+    .attr("y",-6)
+    .text("Distribution of Transport Times: From the Scene to the Hospital (Ambulance)")
   
   var mins = d3.scaleBand().rangeRound([35, 315]).padding(0.1),
     cts = d3.scaleLinear().rangeRound([height, 157]);
