@@ -331,7 +331,7 @@ d3.csv("lineData.csv", function(d) {
     .text("ambulance");
   
   g.append("text")
-    .attr("x",-40)
+    .attr("x",-15)
     .attr("y",-6)
     .text("Distribution of Transport Times: From the Scene to the Hospital (Ambulance)")
   
@@ -438,7 +438,7 @@ d3.csv("lineData.csv", function(d) {
       
       //title
     g2.append("text")
-      .attr("transform","translate(-40,350) rotate(-90)")
+      .attr("transform","translate(-60,350) rotate(-90)")
       .text("Negative Times Recorded per 1000 Calls");
       
       //legend
@@ -456,11 +456,11 @@ d3.csv("lineData.csv", function(d) {
           .style("fill", "url(#gradient)");
       
       g2.append("text")
-        .attr("transform","translate(" + (l_x-45) + "," + (l_y+22) + ")")
+        .attr("transform","translate(" + (l_x-45) + "," + (l_y+20) + ")")
         .text("251");
       
       g2.append("text")
-        .attr("transform","translate(" + (l_x + l_w + 6) + "," + (l_y+22) + ")")
+        .attr("transform","translate(" + (l_x + l_w + 6) + "," + (l_y+20) + ")")
         .text("5161");
       
       var gradient = svg2.append("defs")
