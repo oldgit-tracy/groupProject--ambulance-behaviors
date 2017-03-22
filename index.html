@@ -264,7 +264,7 @@ d3.csv("lineData.csv", function(d) {
 
   //x axis
   g.append("g")
-      .attr("transform", "translate(0," + (height+margin.bottom) + ")")
+      .attr("transform", "translate(0," + (height+margin.top) + ")")
       .call(d3.axisBottom(x))
       .append("text")
       .attr("fill", "#000")
