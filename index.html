@@ -226,6 +226,26 @@ d3.csv("lineData.csv", function(d) {
   y.domain([0, d3.max(data, function(d){ return +d["Count"]})]);
   area.y0(y(0));
 
+      g.append("line")
+    .attr("stroke","limegreen")
+    .attr("stroke-width","2px")
+    .attr("x1",449)
+    .attr("x2",449)
+    .attr("y1",0)
+    .attr("y2",452);
+  
+  g.append("text")
+    .style("fill","limegreen")
+    .attr("x",455)
+    .attr("y",415)
+    .text("average")
+  
+  g.append("text")
+    .style("fill","limegreen")
+    .attr("x",455)
+    .attr("y",400)
+    .text("16.96")
+
   g.append("path")
       .datum(data)
       .attr("fill", "red")
@@ -336,25 +356,7 @@ d3.csv("lineData.csv", function(d) {
     .attr("y",-6)
     .text("Distribution of Transport Times: From the Scene to the Hospital (Ambulance)")
 
-    g.append("line")
-    .attr("stroke","limegreen")
-    .attr("stroke-width","2px")
-    .attr("x1",449)
-    .attr("x2",449)
-    .attr("y1",0)
-    .attr("y2",452);
-  
-  g.append("text")
-    .style("fill","limegreen")
-    .attr("x",455)
-    .attr("y",415)
-    .text("average")
-  
-  g.append("text")
-    .style("fill","limegreen")
-    .attr("x",455)
-    .attr("y",400)
-    .text("16.96")
+
 
   
   var mins = d3.scaleBand().rangeRound([35, 315]).padding(0.1),
