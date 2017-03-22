@@ -213,7 +213,7 @@ var svg = d3.select("#vis1"),
 
 var parseTime = d3.timeParse("%m/%d/%Y %I:%M:%S %p");
 
-var x = d3.scaleLinear().rangeRound([0, width]);
+var x = d3.scaleLinear().rangeRound([10, width]);
 
 var y = d3.scaleLinear().rangeRound([height, 0]);
 
@@ -240,7 +240,7 @@ d3.csv("lineData.csv", function(d) {
 
   //x axis
   g.append("g")
-      .attr("transform", "translate(0," + (height+25) + ")")
+      .attr("transform", "translate(0," + (height+30) + ")")
       .call(d3.axisBottom(x))
       .append("text")
       .attr("fill", "#000")
@@ -316,7 +316,7 @@ d3.csv("lineData.csv", function(d) {
       
     g.append("g")
       .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height+30) + ")")
       .call(d3.axisBottom(mins)
             .tickFormat("")
            );
