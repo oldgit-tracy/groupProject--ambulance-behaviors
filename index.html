@@ -217,11 +217,9 @@ var x = d3.scaleLinear().rangeRound([0, width]);
 
 var y = d3.scaleLinear().rangeRound([height, 0]);
 
-var o_a = 10; //"area offset"
-
 var area = d3.area()
     .x(function(d) { return x(d["Minutes"]); })
-    .y1(function(d) { return y(d["Count"] - o_a); });
+    .y1(function(d) { return y(d["Count"]); });
 
 d3.csv("lineData.csv", function(d) {
   return d;
@@ -250,7 +248,7 @@ d3.csv("lineData.csv", function(d) {
   x.domain([-40, 80]);
 
   y.domain([0, d3.max(data, function(d){ return +d["Count"]})]);
-  area.y0(y(0)-o_a);
+  area.y0(y(0));
 /*
   line_array = [];
   for(var k in time_to_count){
@@ -266,7 +264,7 @@ d3.csv("lineData.csv", function(d) {
 
   //x axis
   g.append("g")
-      .attr("transform", "translate(0," + height + ")")
+      .attr("transform", "translate(0," + (height+margin.bottom) + ")")
       .call(d3.axisBottom(x))
       .append("text")
       .attr("fill", "#000")
@@ -371,7 +369,7 @@ d3.csv("lineData.csv", function(d) {
       return mins(d.Minutes);
     })
     .attr("y", function(d) {
-      return cts(d.Count) - cts(21.6);
+      return cts(d.Count) - cts(21.55);
     })
     .attr("height", function(d) {
       return height - cts(d.Count);
