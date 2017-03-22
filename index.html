@@ -269,6 +269,16 @@ d3.csv("lineData.csv", function(d) {
           .tickFormat("")
       );
     
+
+    
+    //erase area plot grid lines on callout
+    g.append("rect")
+      .attr("fill","white")
+      .attr("width","242")
+      .attr("height","320")
+      .attr("x",54)
+      .attr("y",32);
+
       g.append("g")
       .attr("class","gridlines y-gridlines")
       .style("opacity",0.3)
@@ -279,15 +289,6 @@ d3.csv("lineData.csv", function(d) {
           .tickSizeOuter(0)
           .tickFormat("")
       );
-    
-    //erase area plot grid lines on callout
-    g.append("rect")
-      .attr("fill","white")
-      .attr("width","242")
-      .attr("height","320")
-      .attr("x",54)
-      .attr("y",32);
-
 
   var x_o = 600, y_o = 100;
   
