@@ -197,7 +197,111 @@ p {
                 </h1>
                   <!-- <img src = "vis_1_official.png" height = "500" width = "960"> -->
                   <svg width = "960" height = "500" id = "vis1">
-                  <script type="text/javascript" src="easyversionPrototypeChart.js"></script>
+                  <script>
+                  var svg_x = 0;
+var svg_y = 0;
+
+var width = 800,
+    size = 100,
+    padding = 0;
+
+
+
+var svg = d3.select("#vis1"),
+    //.append(svg)
+    margin = {top: 20, right: 40, bottom: 40, left: 20},
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom,
+    g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var parseTime = d3.timeParse("%m/%d/%Y %I:%M:%S %p");
+
+var x = d3.scaleLinear().rangeRound([0, width]);
+
+var y = d3.scaleLinear().rangeRound([height, 0]);
+
+
+
+var area = d3.area()
+    .x(function(d) { return x(d["Minutes"]); })
+    .y1(function(d) { return y(d["Count"]); });
+//
+// var verticalLine =
+
+
+d3.csv("lineData.csv", function(d) {
+  return d;
+}, function(error, data) {
+  if (error) throw error;
+/*
+  time_to_count = {};
+  for(var i = 0; i < data.length; i++){
+    time1 = parseTime(data[i]["Hospital DtTm"]);
+    time2 = parseTime(data[i]["Transport DtTm"]);
+    time_interval = d3.timeMinute.count(time1, time2);
+    if(time_interval in time_to_count){
+        time_to_count[time_interval] += 1;
+    }
+    else{
+        time_to_count[time_interval] = 1;
+    }
+  }
+
+  x_axis_max = 0;
+  y_axis_max = 0;
+  for(var k in time_to_count){
+    x_axis_max = Math.max(x_axis_max, +k);
+    y_axis_max = Math.max(y_axis_max, time_to_count[k]);
+  }
+*/
+  x.domain([-40, 80]);
+
+  y.domain([0, d3.max(data, function(d){ return +d["Count"]})]);
+  area.y0(y(0));
+/*
+  line_array = [];
+  for(var k in time_to_count){
+    line_array.push({x: +k, y: time_to_count[k]});
+  }*/
+
+  g.append("path")
+      .datum(data)
+      .attr("fill", "steelblue")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 3)
+      .attr("d", area);
+
+  //x axis
+  g.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x))
+      .append("text")
+      .attr("fill", "#000")
+      .attr("x", 400)
+      .attr("y", 25)
+      .attr("dx", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Time (minutes)");
+
+      g.append("line")
+           .attr("x1", x(0))
+           .attr("x2",x(0))
+           .attr("y1", y(0))
+           .attr("y2", y(380))
+           .attr("stroke", "red");
+
+  //y axis
+  g.append("g")
+      .call(d3.axisLeft(y))
+    .append("text")
+      .attr("fill", "#000")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", "0.71em")
+      .attr("text-anchor", "end")
+      .text("Count");
+});
+                  </script>
 
                 <p class="content-detail">
                    This first chart is an area graph with a callout focusing on a subset of the data. The x-axis is the duration of the ride from the scene to the hospital. This chart includes negative values in the data. Since these values don't make physical sense, they are a sign that something else could be going on. There's no way to tell with the information we have what that could be, or if it is important. It could be that fire fighters simply forget to push some first button until minutes after they've hit the second. Maybe this is just random error- or maybe it's because they're tired. Should we be worried? We can look to the next chart to find out.
@@ -207,8 +311,164 @@ p {
                    <br>
                    <br>
                    <!-- <img src = "vis_2_official.png" height = "500" width = "960"> -->
-                   <!-- <svg width = "960" height = "500" id = "vis2">
-                   <script type="text/javascript" src="bar_per_1000.js"></script> -->
+                   <svg width = "960" height = "500" id = "vis2">
+                   <script>
+                       var svg2 = d3.select("#vis2"),
+    margin = {top: 20, right: 80, bottom: 60, left: 60},
+    width = svg2.attr("width") - margin.left - margin.right,
+    height = svg2.attr("height") - margin.top - margin.bottom,
+    g2 = svg2.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  
+    var battalions = ["B02","B03","B01","B04","B10","B09","B08","B05","B06","B07","B99"];
+ 
+    var bats = d3.scaleBand().domain(battalions).rangeRound([0, width])
+    .paddingInner(0.1).paddingOuter(0.05);
+    act = d3.scaleLinear().domain([0,9]).rangeRound([height, 0]).nice();
+  
+    var color = d3.scaleSequential(d3.interpolateBlues).domain([251,5161]);
+  
+    d3.csv("secondBar.csv", function(error, data) {
+      if (error) throw error;
+      
+    g2.append("g")
+      .attr("class", "axis axis--x")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(bats)
+           );
+      
+    g2.append("g")
+      .attr("class", "axis axis--y")
+      .call(d3.axisLeft(act));
+  
+    // add the Y gridlines
+    g2.append("g")
+      .attr("class","gridlines y-gridlines")
+      .style("opacity",0.3)
+      .call(d3.axisRight(act)
+          .ticks(7)
+          .tickSize(width)
+          .tickSizeOuter(0)
+          .tickFormat("")
+      );
+      
+      //title
+    g2.append("text")
+      .attr("transform","translate(-25,350) rotate(-90)")
+      .text("Negative Times Recorded per 1000 Calls");
+      
+      //legend
+      var l_x = 695, l_y = 450, l_w = 100, l_h = 22;
+      g2.append("rect")
+        .attr("transform","translate("+ (l_x-1) +","+(l_y-1)+")")
+        .attr("width",l_w + 2)
+        .attr("height",l_h + 2)
+        .attr("fill","black")
+      
+      g2.append("rect")
+        .attr("transform","translate("+l_x+ "," + l_y + ")")
+        .attr("width", l_w)
+          .attr("height", l_h)
+          .style("fill", "url(#gradient)");
+      
+      g2.append("text")
+        .attr("transform","translate(" + (l_x-35) + "," + (l_y+16) + ")")
+        .text("251");
+      
+      g2.append("text")
+        .attr("transform","translate(" + (l_x + l_w + 6) + "," + (l_y+16) + ")")
+        .text("5161");
+      
+      var gradient = svg2.append("defs")
+        .append("linearGradient")
+          .attr("id", "gradient")
+          .attr("x1", "100%")
+          .attr("y1", "0%")
+          .attr("x2", "0%")
+          .attr("y2", "0%")
+          .attr("spreadMethod", "pad");
+
+      gradient.append("stop")
+          .attr("offset", "0%")
+          .attr("stop-color", "#2800cc")
+          .attr("stop-opacity", 1);
+
+      gradient.append("stop")
+          .attr("offset", "100%")
+          .attr("stop-color", "#ffffff")
+          .attr("stop-opacity", 1);
+      
+      g2.append("text")
+        .style("font-size","12px")
+        .attr("transform","translate(" + (l_x + 25) + "," + (l_y - 3) + ")")
+        .text("Total Calls");
+      
+      g2.append("line")
+        .attr("stroke","mediumblue")
+        .attr("stroke-width","2px")
+        .attr("x1",700)
+        .attr("x2",635)
+        .attr("y1",act(5.65))
+        .attr("y2",act(3.53));
+      
+      var x_off = 670, y_off = 91;
+      
+      g2.append("text")
+        .style("fill","mediumblue")
+        .style("font-size","60px")
+        .attr("transform","translate("+(x_off + 5)+","+y_off+")")
+        .text("0.35%");
+      
+      g2.append("text")
+        .style("fill","mediumblue")
+        .style("font-size","40px")
+        .attr("transform","translate("+x_off+","+(y_off + 33)+")")
+        .text("of all calls");
+      
+      g2.append("text")
+        .style("fill","mediumblue")
+        .style("font-size","30px")
+        .attr("transform","translate("+(x_off + 15)+","+(y_off + 57)+")")
+        .text("had negative");
+      
+      g2.append("text")
+        .style("fill","mediumblue")
+        .style("font-size","30px")
+        .attr("transform","translate("+(x_off + 50)+","+(y_off + 80)+")")
+        .text("times");
+      
+      g2.append("text")
+        .attr("transform","translate(375,460)")
+        .text("Battalion");
+          
+      
+    var bars = g2.selectAll("bar").data(data).enter().append("rect")
+    .attr("class", "bar")
+    .attr("width", bats.bandwidth())
+    .attr("stroke","grey")
+    .attr("fill", function(d) {
+      return color(d.Activity);
+    })
+    .attr("x", function(d) {
+      return bats(d.Battalion);
+    })
+    .attr("y", function(d) {
+      return act(d.Rate);
+    })
+    .attr("height", function(d) {
+      return height - act(d.Rate);
+    });
+      
+      g2.append("line")
+        .attr("stroke","red")
+        .attr("stroke-width","2px")
+        .attr("x1",0)
+        .attr("x2",width)
+        .attr("y1",act(3.53))
+        .attr("y2",act(3.53));
+      
+    });
+                   </script>
+                   <!-- <script type="text/javascript" src="bar_per_1000.js"></script> -->
                    <p>
                    This second bar chart does not encode number of records as height. In this chart, the height of the bars proportional to the number of times a battalion reported a negative (impossible) time divided by the total number of calls that Battalion responded to, and the color is proportional to the number of calls that battalion responded to. Our motion for visualizaing this calculation was to get a sense of whether or not some Battalions might be struggling more than others. From our exploratory analysis of the other fields in the data, we did not find and compelling correlates with the entries of negative times. The way this chart shows the tendency of a battalion to make record-keeping mistakes with height, and encodes the total number of calls that battalion responded to with blue allows us to see that Battalion 5 has seemingly the worst performance in this metric, but the color of the bar reminds us to take that value with a grain of salt. The bars are organized from left to right, from most confident to least confident. The average rate of "mistakes" was 0.35%, and is labeled in the graphic.
 
