@@ -248,7 +248,7 @@ d3.csv("lineData.csv", function(d) {
   x.domain([-40, 80]);
 
   y.domain([0, d3.max(data, function(d){ return +d["Count"]})]);
-  area.y0(y(0));
+  area.y0(y(1));
 /*
   line_array = [];
   for(var k in time_to_count){
@@ -369,7 +369,7 @@ d3.csv("lineData.csv", function(d) {
       return mins(d.Minutes);
     })
     .attr("y", function(d) {
-      return cts(d.Count) - cts(21.85);
+      return cts(d.Count) - cts(21.7);
     })
     .attr("height", function(d) {
       return height - cts(d.Count);
