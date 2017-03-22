@@ -198,12 +198,6 @@ p {
                   <!-- <img src = "vis_1_official.png" height = "500" width = "960"> -->
                   <svg width = "960" height = "500" id = "vis1">
                   <script>
-                  var svg_x = 0;
-var svg_y = 0;
-
-var width = 800,
-    size = 100,
-    padding = 0;
 
 var svg = d3.select("#vis1"),
     margin = {top: 20, right: 20, bottom: 30, left: 20},
@@ -250,19 +244,40 @@ d3.csv("lineData.csv", function(d) {
       .attr("text-anchor", "end")
       .text("Time (minutes)");
 
-  //y axis
+   //y axis
   g.append("g")
       .attr("transform","translate("+10+",0)")
       .call(d3.axisLeft(y))
     .append("text")
       .attr("fill", "#000")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("y",5)
       .attr("dy", "0.71em")
       .attr("text-anchor", "end")
       .text("Count");
 });
-  
+    
+      //area plot grid lines
+  g.append("g")
+      .attr("class","gridlines y-gridlines")
+      .style("opacity",0.3)
+      .attr("transform", "translate(0,0)")
+      .call(d3.axisRight(y)
+          .ticks(7)
+          .tickSize(width)
+          .tickSizeOuter(0)
+          .tickFormat("")
+      );
+    
+    //erase area plot grid lines on callout
+    g.append("rect")
+      .attr("fill","white")
+      .attr("width","242")
+      .attr("height","320")
+      .attr("x",54)
+      .attr("y",32);
+
+
   var x_o = 600, y_o = 100;
   
   g.append("text")
