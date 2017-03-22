@@ -282,7 +282,7 @@ d3.csv("lineData.csv", function(d) {
       g.append("g")
       .attr("class","gridlines y-gridlines")
       .style("opacity",0.3)
-      .attr("transform", "translate(10,0)")
+      .attr("transform", "translate(0,0)")
       .call(d3.axisBottom(x)
           .ticks(12)
           .tickSize(height)
