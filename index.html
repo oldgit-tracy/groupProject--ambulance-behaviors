@@ -376,7 +376,8 @@ d3.csv("lineData.csv", function(d) {
       return cts(d.Count) - cts(21.55);
     })
     .attr("height", function(d) {
-      return height - cts(d.Count) + 10;
+      console.log(d.Count);
+      return height - cts(d.Count);
     });
       
     });
