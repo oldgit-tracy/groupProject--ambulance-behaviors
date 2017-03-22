@@ -271,7 +271,13 @@ d3.csv("lineData.csv", function(d) {
     
 
     
-
+    //erase area plot grid lines on callout
+    g.append("rect")
+      .attr("fill","white")
+      .attr("width","242")
+      .attr("height","320")
+      .attr("x",54)
+      .attr("y",32);
 
       g.append("g")
       .attr("class","gridlines y-gridlines")
@@ -367,7 +373,7 @@ d3.csv("lineData.csv", function(d) {
       return mins(d.Minutes);
     })
     .attr("y", function(d) {
-      return cts(d.Count) - cts(21.55);
+      return cts(d.Count) - cts(19.85);
     })
     .attr("height", function(d) {
       return height - cts(d.Count);
