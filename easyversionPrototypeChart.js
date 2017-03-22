@@ -7,7 +7,7 @@ var width = 800,
 
 
 
-var svg = d3.select("svg"),
+var svg = d3.select("#vis1"),
     //.append(svg)
     margin = {top: 20, right: 40, bottom: 40, left: 20},
     width = +svg.attr("width") - margin.left - margin.right,

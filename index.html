@@ -195,7 +195,11 @@ p {
                 <h1>
                   <span>D3</span>
                 </h1>
-                  <img src = "vis_1_official.png" height = "500" width = "960">
+                  <!-- <img src = "vis_1_official.png" height = "500" width = "960"> -->
+                  <svg width = "960" height = "500" id = "vis1">
+                  <script type="text/javascript" src="easyversionPrototypeChart.js"></script>
+                  <svg width = "960" height = "500" id = "vis2">
+                  <script type="text/javascript" src="bar_per_1000.js"></script>
                 <p class="content-detail">
                    This first chart is an area graph with a callout focusing on a subset of the data. The x-axis is the duration of the ride from the scene to the hospital. This chart includes negative values in the data. Since these values don't make physical sense, they are a sign that something else could be going on. There's no way to tell with the information we have what that could be, or if it is important. It could be that fire fighters simply forget to push some first button until minutes after they've hit the second. Maybe this is just random error- or maybe it's because they're tired. Should we be worried? We can look to the next chart to find out.
 
@@ -203,7 +207,7 @@ p {
                    <br>
                    <br>
                    <br>
-                   <img src = "vis_2_official.png" height = "500" width = "960">
+                   <!-- <img src = "vis_2_official.png" height = "500" width = "960"> -->
                    <p>
                    This second bar chart does not encode number of records as height. In this chart, the height of the bars proportional to the number of times a battalion reported a negative (impossible) time divided by the total number of calls that Battalion responded to, and the color is proportional to the number of calls that battalion responded to. Our motion for visualizaing this calculation was to get a sense of whether or not some Battalions might be struggling more than others. From our exploratory analysis of the other fields in the data, we did not find and compelling correlates with the entries of negative times. The way this chart shows the tendency of a battalion to make record-keeping mistakes with height, and encodes the total number of calls that battalion responded to with blue allows us to see that Battalion 5 has seemingly the worst performance in this metric, but the color of the bar reminds us to take that value with a grain of salt. The bars are organized from left to right, from most confident to least confident. The average rate of "mistakes" was 0.35%, and is labeled in the graphic.
 
