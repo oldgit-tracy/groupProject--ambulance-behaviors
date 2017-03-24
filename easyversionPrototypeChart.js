@@ -1,4 +1,3 @@
-( function(){
 var svg_x = 0;
 var svg_y = 0;
 
@@ -37,22 +36,22 @@ d3.csv("lineData.csv", function(d) {
 /*
   time_to_count = {};
   for(var i = 0; i < data.length; i++){
-	  time1 = parseTime(data[i]["Hospital DtTm"]);
-	  time2 = parseTime(data[i]["Transport DtTm"]);
-	  time_interval = d3.timeMinute.count(time1, time2);
-	  if(time_interval in time_to_count){
-	      time_to_count[time_interval] += 1;
-	  }
-	  else{
-	      time_to_count[time_interval] = 1;
-	  }
+    time1 = parseTime(data[i]["Hospital DtTm"]);
+    time2 = parseTime(data[i]["Transport DtTm"]);
+    time_interval = d3.timeMinute.count(time1, time2);
+    if(time_interval in time_to_count){
+        time_to_count[time_interval] += 1;
+    }
+    else{
+        time_to_count[time_interval] = 1;
+    }
   }
 
   x_axis_max = 0;
   y_axis_max = 0;
   for(var k in time_to_count){
-	  x_axis_max = Math.max(x_axis_max, +k);
-	  y_axis_max = Math.max(y_axis_max, time_to_count[k]);
+    x_axis_max = Math.max(x_axis_max, +k);
+    y_axis_max = Math.max(y_axis_max, time_to_count[k]);
   }
 */
   x.domain([-40, 80]);
@@ -62,14 +61,14 @@ d3.csv("lineData.csv", function(d) {
 /*
   line_array = [];
   for(var k in time_to_count){
-	  line_array.push({x: +k, y: time_to_count[k]});
+    line_array.push({x: +k, y: time_to_count[k]});
   }*/
 
   g.append("path")
       .datum(data)
       .attr("fill", "steelblue")
-	  .attr("stroke", "steelblue")
-	  .attr("stroke-width", 3)
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 3)
       .attr("d", area);
 
   //x axis
@@ -102,4 +101,3 @@ d3.csv("lineData.csv", function(d) {
       .attr("text-anchor", "end")
       .text("Count");
 });
-})
